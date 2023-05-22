@@ -1,12 +1,145 @@
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345969748500757"
-     crossorigin="anonymous"></script>
-<!-- google001 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3345969748500757"
-     data-ad-slot="6619484633"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>账号密码管理</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        #search {
+            padding: 5px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .ad-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345969748500757" crossorigin="anonymous"></script>
+    <script>
+        // 存储账号密码的数组
+        var accounts = [];
+
+        function saveAccount() {
+            var account = document.getElementById("account").value;
+            var password = document.getElementById("password").value;
+
+            if (account && password) {
+                accounts.push({ account: account, password: password });
+                document.getElementById("form").reset();
+                updateAccountList();
+            }
+        }
+
+        function searchAccounts() {
+            var searchValue = document.getElementById("search").value.toLowerCase();
+            var filteredAccounts = accounts.filter(function (item) {
+                return item.account.toLowerCase().includes(searchValue);
+            });
+            updateAccountList(filteredAccounts);
+        }
+
+        function updateAccountList(filteredAccounts) {
+            var accountList = document.getElementById("accountList");
+            accountList.innerHTML = "";
+
+            var accountsToDisplay = filteredAccounts || accounts;
+
+            accountsToDisplay.forEach(function (item) {
+                var li = document.createElement("li");
+                var text = document.createTextNode(item.account + " - " + item.password);
+                li.appendChild(text);
+                accountList.appendChild(li);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>账号密码管理</h1>
+
+    <div class="ad-container">
+        <!-- google001 -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3345969748500757"
+             data-ad-slot="6619484633"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <form id="form">
+        <label for="account">账号：</label>
+        <input type="text" id="account" required>
+        <label for="password">密码：</label>
+       <input type="password" id="password" required>
+       <button type="button" onclick="saveAccount()">保存</button>
+   </form>
+
+   <hr>
+
+    <h2>账号密码列表</h2>
+    <input type="text" id="search" placeholder="输入账号进行搜索" oninput="searchAccounts()">
+    <ul id="accountList"></ul>
+
+    <script>
+        // JavaScript代码
+    </script>
+</body>
+</html>
